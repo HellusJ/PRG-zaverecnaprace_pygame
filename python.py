@@ -28,6 +28,11 @@ ruce_shaking_1 = pygame.transform.scale(pygame.image.load("ruce_shaking_1.png"),
 ruce_Shaking_2 = pygame.transform.scale(pygame.image.load("ruce_Shaking_2.png"), (90, 90))
 ruce_throw = pygame.transform.scale(pygame.image.load("ruce_throw.png"), (308, 132))
 
+ruce_opp = pygame.transform.scale(pygame.image.load("ruce_opp.png"), (280, 120))
+ruce_opp_shaking_1 = pygame.transform.scale(pygame.image.load("ruce_opp_shaking_1.png"), (80, 80))
+ruce_opp_Shaking_2 = pygame.transform.scale(pygame.image.load("ruce_opp_Shaking_2.png"), (90, 90))
+ruce_opp_throw = pygame.transform.scale(pygame.image.load("ruce_opp_throw.png"), (308, 132)) 
+
 #kostky
 kostka1 = pygame.image.load("kostka_1.png")
 kostka2 = pygame.image.load("kostka_2.png")
@@ -66,7 +71,9 @@ def hra():
         #ruce
         screen.blit(ruce, (210,580))
 
+        screen.blit(ruce_opp, (210, 0))
+
         pygame.display.flip()
-        pygame.time.delay(30)
+        pygame.time.delay(60)
         
 menu()
