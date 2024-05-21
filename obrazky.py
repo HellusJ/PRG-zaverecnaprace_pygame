@@ -52,6 +52,6 @@ rules1 = pygame.transform.scale(pygame.image.load("rules_picture.png"), (560, 56
 rules1_rect = rules1.get_rect()
 rules1_rect.topleft = (70, 15)
 
-animace_ruce = [ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2, ruce_shaking_1, ruce_throw,ruce_throw, ruce]
+animace_ruce = [ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2, ruce_shaking_1, ruce_throw, ruce_throw, ruce]
 kostky = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
 
