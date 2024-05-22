@@ -55,3 +55,7 @@ rules1_rect.topleft = (70, 15)
 animace_ruce = [ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2, ruce_shaking_1, ruce_throw, ruce_throw, ruce]
 kostky = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
 
+#signs
+youstart = pygame.transform.scale(pygame.image.load("youstart_sign.png"), (650, 310))
+youstart_rect = rules1.get_rect()
+youstart_rect.topleft = (30, 200)

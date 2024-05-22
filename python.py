@@ -9,16 +9,12 @@ pygame.init()
 screen = pygame.display.set_mode((700, 700))
 pygame.display.set_caption("Kostky")
 
-
-
 #funkce
 def napis(text,font_size,x,y):
     vykres = pygame.font.SysFont(None, font_size).render(text, True, textcolor)
     screen.blit(vykres, (x,y))
 
 souradnice = [(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700)]
-
-
 
 #menu
 def menu():
@@ -59,16 +55,29 @@ def rules():
         pygame.time.delay(60)
 
 #HRA
+start = time.time()
+
+show_picture = False
 
 hod = []
 def hra():
+
     global players_points
     players_points = 0
+    global pc_points
+    pc_points = 0
+
     while True:
+
         screen.blit(pozadi, (0, 0))
         screen.blit(ruce, (210,580))
         screen.blit(ruce_opp, (210, 0))
         screen.blit(throwbutton, throwbutton_rect)
+
+        cas = time.time()
+
+        if not show_picture and cas - start < 2:
+            screen.blit(youstart, youstart_rect)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -77,8 +86,7 @@ def hra():
                 if throwbutton_rect.collidepoint(event.pos):
 
                     animace_ruk()
-                    napis(f"points: {players_points}",40,30,660)
-
+                    
                     for i in range(6):
                         losovani = random.choice(kostky)
                         hod.append(losovani)
@@ -162,10 +170,19 @@ def hra():
                         players_points = players_points + (6 * 400)
                     if pocet_sestek == 6:
                         players_points = players_points + (6 * 800) 
+                    
+                    #postupka
+                    postupka = set(kostky)
+                    porovnani = set(hod)
+                    if postupka == porovnani:
+                        players_points += 1500
 
+                    #tridvojice
+                    
                     hod.clear()
 
         napis(f"points: {players_points}",40,30,660)
+        napis(f"points: {pc_points}", 40,30,20)
         pygame.display.flip()
         pygame.time.delay(60)
 
@@ -176,6 +193,7 @@ def animace_ruk():
         screen.blit(pozadi,(0,0))
         screen.blit(ruce_opp,(210, 0))
         napis(f"points: {players_points}",40,30,660)
+        napis(f"points: {pc_points}", 40,30,20)
         snimek_rect = snimek.get_rect()
         snimek_rect.midbottom = (x, y) 
         screen.blit(snimek, snimek_rect)
