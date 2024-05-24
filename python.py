@@ -5,6 +5,7 @@ import time
 from obrazky import *
 
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((700, 700))
 pygame.display.set_caption("Kostky")
@@ -14,8 +15,12 @@ def napis(text,font_size,x,y):
     vykres = pygame.font.SysFont(None, font_size).render(text, True, textcolor)
     screen.blit(vykres, (x,y))
 
+def zvuk(nazev):
+    sound = pygame.mixer.Sound(nazev)
+    sound.play()
+
 souradnice = [(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700)]
-souradnice_opp = [(350,100),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80)]
+souradnice_opp = [(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,120),(350,120),(350,120)]
 
 #menu
 def menu():
@@ -25,10 +30,16 @@ def menu():
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if playbutton_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
                     hra()
+                    
                 elif quitbutton_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
+                    time.sleep(0.25)
                     sys.exit()
+
                 elif rulesbutton_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
                     rules()
         
         screen.fill(menucolor)
@@ -46,6 +57,7 @@ def rules():
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if stepback_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
                     menu()
 
         screen.fill(menucolor)
@@ -85,6 +97,7 @@ def hra():
                 if throwbutton_rect.collidepoint(event.pos):
 
                     animace_ruk()
+                    zvuk("diceroll_sound.mp3")
                     
                     for i in range(6):
                         losovani = random.choice(kostky)
@@ -173,6 +186,8 @@ def hra():
                     if pocet_sestek == 6:
                         players_points = players_points + (6 * 800)
 
+                    
+
                     #postupka
                     postupka = set(kostky)
                     porovnani = set(hod)
@@ -180,13 +195,14 @@ def hra():
                         players_points += 1500
 
                     #tridvojice
-                
-
+                    
                     hod.clear()
+                    zvuk("points_sound.mp3")
 
                 elif throw_opp_button_rect.collidepoint(event.pos):
 
                     animace_ruk_opp()
+                    zvuk("diceroll_sound.mp3")
 
                     for i in range(6):
                         losovani2 = random.choice(kostky_opp)
@@ -285,13 +301,12 @@ def hra():
                 
 
                     hod_opp.clear()
+                    zvuk("points_sound.mp3")
 
         napis(f"points: {players_points}",40,30,660)
         napis(f"points: {pc_points}", 40,30,20)
         pygame.display.flip()
         pygame.time.delay(60)
-
-
 
 def animace_ruk():
     for z in range(10):
