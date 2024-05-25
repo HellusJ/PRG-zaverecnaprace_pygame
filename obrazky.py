@@ -10,15 +10,15 @@ pozadi = pygame.image.load("background.png")
 #buttons
 playbutton = pygame.transform.scale(pygame.image.load("button_play.png"), (300,150))
 playbutton_rect = playbutton.get_rect()
-playbutton_rect.center = (355, 160)
+playbutton_rect.center = (355, 100)
 
 quitbutton = pygame.transform.scale(pygame.image.load("button_quit.png"), (260,140))
 quitbutton_rect = playbutton.get_rect()
-quitbutton_rect.center = (370, 500)
+quitbutton_rect.center = (370, 440)
 
 rulesbutton = pygame.transform.scale(pygame.image.load("rules_button.png"), (355,140))
 rulesbutton_rect = playbutton.get_rect()
-rulesbutton_rect.center = (315, 335)
+rulesbutton_rect.center = (315, 275)
 
 stepback = pygame.transform.scale(pygame.image.load("stepback.png"), (45,45))
 stepback_rect = playbutton.get_rect()
@@ -60,8 +60,3 @@ animace_ruce_opp = [ruce_opp_shaking_1,ruce_opp_Shaking_2,ruce_opp_shaking_1,ruc
 animace_ruce = [ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2, ruce_shaking_1, ruce_throw, ruce_throw, ruce]
 kostky = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
 kostky_opp = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
-
-#signs
-youstart = pygame.transform.scale(pygame.image.load("youstart_sign.png"), (650, 310))
-youstart_rect = rules1.get_rect()
-youstart_rect.topleft = (30, 200)

@@ -95,9 +95,11 @@ def hra():
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if throwbutton_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
 
                     animace_ruk()
                     zvuk("diceroll_sound.mp3")
+                
                     
                     for i in range(6):
                         losovani = random.choice(kostky)
@@ -109,7 +111,7 @@ def hra():
                         y += 40
 
                     pygame.display.flip()
-                    pygame.time.wait(3000)
+                    pygame.time.wait(4000)
 
                     pocet_jednicek = hod.count(kostka1)
                     pocet_dvojek = hod.count(kostka2)
@@ -186,8 +188,6 @@ def hra():
                     if pocet_sestek == 6:
                         players_points = players_points + (6 * 800)
 
-                    
-
                     #postupka
                     postupka = set(kostky)
                     porovnani = set(hod)
@@ -195,11 +195,15 @@ def hra():
                         players_points += 1500
 
                     #tridvojice
+                    pairs = [hod.count(i) for i in set(hod) if hod.count(i) == 2]
+                    if len(pairs) == 3:
+                        players_points += 1000
                     
                     hod.clear()
                     zvuk("points_sound.mp3")
 
                 elif throw_opp_button_rect.collidepoint(event.pos):
+                    zvuk("click_sound.mp3")
 
                     animace_ruk_opp()
                     zvuk("diceroll_sound.mp3")
@@ -214,7 +218,7 @@ def hra():
                         y += 40
 
                     pygame.display.flip()
-                    pygame.time.wait(3000)
+                    pygame.time.wait(4000)
 
                     pocet_jednicek_opp = hod_opp.count(kostka1)
                     pocet_dvojek_opp = hod_opp.count(kostka2)
@@ -298,8 +302,10 @@ def hra():
                         pc_points += 1500
 
                     #tridvojice
+                    pairs2 = [hod_opp.count(i) for i in set(hod_opp) if hod_opp.count(i) == 2]
+                    if len(pairs2) == 3:
+                        pc_points += 1000
                 
-
                     hod_opp.clear()
                     zvuk("points_sound.mp3")
 
