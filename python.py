@@ -1,3 +1,4 @@
+
 import pygame
 import sys
 import random
@@ -117,7 +118,6 @@ def hra():
         if players_points >= 10000:
             zvuk("winsound.mp3")
             konec_player()
-
 
         screen.blit(pozadi, (0, 0))
         screen.blit(ruce, (210,580))
