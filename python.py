@@ -118,6 +118,7 @@ def hra():
             zvuk("winsound.mp3")
             konec_player()
 
+
         screen.blit(pozadi, (0, 0))
         screen.blit(ruce, (210,580))
         screen.blit(ruce_opp, (210, 0))
