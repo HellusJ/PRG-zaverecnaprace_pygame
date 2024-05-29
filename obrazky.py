@@ -60,3 +60,8 @@ animace_ruce_opp = [ruce_opp_shaking_1,ruce_opp_Shaking_2,ruce_opp_shaking_1,ruc
 animace_ruce = [ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2,ruce_shaking_1,ruce_Shaking_2, ruce_shaking_1, ruce_throw, ruce_throw, ruce]
 kostky = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
 kostky_opp = [kostka1,kostka2,kostka3,kostka4,kostka5,kostka6]
+
+#sign
+uwonsign = pygame.transform.scale(pygame.image.load("winneris_sign.png"), (300, 66))
+uwonsign_rect = uwonsign.get_rect()
+uwonsign_rect.topleft = (200, 250)

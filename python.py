@@ -22,6 +22,37 @@ def zvuk(nazev):
 souradnice = [(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700),(350,700)]
 souradnice_opp = [(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,80),(350,120),(350,120),(350,120)]
 
+#konechry
+def konec_pc():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        screen.fill(menucolor)
+        screen.blit(uwonsign, uwonsign_rect)
+        screen.blit(ruce_opp, (210, 350))
+
+        pygame.display.flip()
+
+        time.sleep(4)
+        sys.exit()
+
+def konec_player():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        screen.fill(menucolor)
+        screen.blit(uwonsign, uwonsign_rect)
+        screen.blit(ruce, (210, 350))
+
+        pygame.display.flip()
+
+        time.sleep(4)
+        sys.exit()
+
 #menu
 def menu():
     while True:
@@ -80,15 +111,18 @@ def hra():
 
     while True:
 
+        if pc_points >= 10000:
+            zvuk("winsound.mp3")
+            konec_pc()
+        if players_points >= 10000:
+            zvuk("winsound.mp3")
+            konec_player()
+
         screen.blit(pozadi, (0, 0))
         screen.blit(ruce, (210,580))
         screen.blit(ruce_opp, (210, 0))
         screen.blit(throwbutton, throwbutton_rect)
         screen.blit(throw_opp_button, throw_opp_button_rect)
-
-        #vyhra/prohra
-        if pc_points >= 10000 or players_points >= 10000:
-            sys.exit()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
